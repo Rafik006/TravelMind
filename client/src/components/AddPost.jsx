@@ -1,17 +1,33 @@
+import axios from 'axios'
 import React, { useState } from 'react'
 
-const AddPost = ({addPost}) => {
+const AddPost = ({addPost,currentUser}) => {
     const [post,setPost]=useState("")
+    const  [imageUrl,setImageUrl]=useState("")
+    const[file,setFile]=useState("")
+    console.log(imageUrl)
+    const uploadImage=async()=>{
+      const form=new FormData()
+      form.append("file",file)
+      form.append("upload_preset","travelMind")
+      await axios.post("https://api.cloudinary.com/v1_1/do25iiz1j/upload",form)
+      .then(res=>setImageUrl(res.data.secure_url))
+      .catch(err=>console.log(err))
+    }
   return (
   
         <div className='post-input'>
-                <img src='https://yt3.googleusercontent.com/afu13e7K1pNwaLRcvgpONirk2D3YqA4guP26hVweGWpWmA7OU0sEsY3Dk_mYpKLndFPnvNtb=s900-c-k-c0x00ffffff-no-rj' alt="el3ou9"/>
+                <img src={currentUser.imageUrl} alt="el3ou9"/>
                 <input className='about-trip'  placeholder=" write about your trip here ..." value={post} onChange={(e)=>setPost(e.target.value)} />
-                <input className='image-input' type='file' />
+                <input className='image-input' type='file' onChange={(e)=>setFile(e.target.files[0])} />
                 <button className='addPost' onClick={()=>{
-                    addPost(1,{"content":post,imageUrl:"https://www.thetrainline.com/cmsmedia/cms/10023/austria_vienna_hero_1x.jpg"})
+                  uploadImage()
+                }} >upload Image</button>
+            {imageUrl&&  <button className='addPost' onClick={()=>{
+                    
+                    addPost(currentUser.userId,{"content":post,imageUrl:imageUrl})
                     setPost("")
-                }}>Add Post</button>
+                }}>Add Post</button>}
         </div>
 
 

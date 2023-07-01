@@ -4,8 +4,8 @@ const {createUser,getUser,updateUser,deleteUser}=require("../controllers/Users")
 
 
 // user Routes
+router.get("/getUser/:email/:password",getUser)
 router.post('/createUser',createUser)
-router.get("/getUser",getUser)
 router.put("/updateUser/:userId",updateUser)
 router.delete("/deleteUser/:userId",deleteUser)
 

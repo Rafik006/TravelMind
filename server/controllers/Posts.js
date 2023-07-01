@@ -11,7 +11,7 @@ module.exports={
             .catch(err=>res.status(500).json(err))
         },
         getAllPost:(req,res)=>{
-            Posts.findAll({include:{model:Users,as:"user"}})
+            Posts.findAll({include:{model:Users,as:"user"},order: [['createdAt', 'DESC']]})
             .then(result=>res.status(200).json(result))
             .catch(err=>res.status(500).json(err))
         },

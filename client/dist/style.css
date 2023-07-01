@@ -16,6 +16,7 @@ font-family: 'Poppins', sans-serif; */
     align-items: center;
     font-family: 'Abril Fatface', cursive;
     list-style: none;
+    margin: 0px
     
 
   }
@@ -138,5 +139,82 @@ font-family: 'Poppins', sans-serif; */
   .edit-user{
     display: flex;
   }
+  .main-home img{
+    width: 100%;
+    height: 750px;
+  }
+ .main-home p{
+    background-color: #09186d;
+    /* width: max-content; */
+    padding: 20px;
+    color: #fff;
+    /* font-size: 20px; */
+    border-radius: 10px;
+    z-index: 9999;
+    font-family: 'Abril Fatface', cursive;
+
+  }
+  .signin,
+  .signUp {
+    position: absolute;
+    
+    left: 40%;
+    width: 300px;
+    text-align: center;
+    font-size: 30px;
+    cursor: pointer;
+  }
+  .signin{
+    top: 67%;
+  }
+  .signUp{
+    top: 60%;
+  }
+  .signup-container {
+    background-color: #09186d;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .signup-form-container {
+    max-width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .signup-header {
+    text-align: center;
+    color: #09186d;
+    font-size: 25px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
   
   
+  
+  .form-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+  }
+  
+  .form-button {
+    background-color: #09186d;
+    color: #fff;
+    cursor: pointer;
+    font-size: 25px;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+  }
+  .signupInput{
+    margin-bottom: 20px;
+  }

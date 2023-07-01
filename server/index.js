@@ -1,6 +1,7 @@
 const express = require("express");
 const itemRoutes = require('./routes/item.routes')
 const sequelize=require("./database/config")
+const cors=require("cors")
 
 // TODO: Update this
 // UNCOMMENT THE DATABASE YOU'D LIKE TO USE
@@ -8,7 +9,7 @@ const sequelize=require("./database/config")
 // const db = require('./database-mongo');
 
 const app = express();
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT||3003
 
 
 app.use(express.json());
@@ -27,5 +28,5 @@ sequelize.authenticate().then(()=>{
 }).catch((err)=>console.error("unable to connect to the database :",err))
 
 app.listen(PORT, function () {
-  console.log("listening on port 3000!");
+  console.log("listening on port !"+PORT      );
 });
