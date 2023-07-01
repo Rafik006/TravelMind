@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import UpdatePost from './UpdatePost.jsx'
 
-const Post = ({post,currentUser,user,deletePost,Updatepost}) => {
+const Post = ({post,currentUser,user,deletePost,Updatepost,addLike,handleReftch}) => {
   const [editPost,setEdit]=useState({})
+  const [like,setLike]=useState(true)
+  const [classNamee,setClassName]=useState("")
   const handleEdit=(obj)=>{
     setEdit(obj)
   }
@@ -27,7 +29,12 @@ const Post = ({post,currentUser,user,deletePost,Updatepost}) => {
                 <img className='post_image' src={post.imageUrl}/>
             </div>
             <div className='interaction-container'>
-                <p>{post.likes} like</p> <p>comment</p>
+                <p className={classNamee} onClick={()=>{
+                  {like&&addLike(post.postsId)}
+                  setLike(false)
+                  {like&&handleReftch()}
+                  setClassName("liked")
+                  }}>{post.likes} like</p> <p>comment</p>
             </div>
     </div>
   )

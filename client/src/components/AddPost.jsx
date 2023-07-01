@@ -5,7 +5,7 @@ const AddPost = ({addPost,currentUser}) => {
     const [post,setPost]=useState("")
     const  [imageUrl,setImageUrl]=useState("")
     const[file,setFile]=useState("")
-    console.log(imageUrl)
+   
     const uploadImage=async()=>{
       const form=new FormData()
       form.append("file",file)

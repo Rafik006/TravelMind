@@ -276,3 +276,6 @@ font-family: 'Poppins', sans-serif; */
     border-radius: 8px;
     cursor: pointer;
   }
+  .liked {
+    color: black;
+  }

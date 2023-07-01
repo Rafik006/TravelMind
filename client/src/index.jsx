@@ -24,7 +24,7 @@ const App = () => {
   //create users
   const addUser=(obj)=>{
       axios.post(`http://localhost:3003/api/posts/createUser`,obj)
-      .then(res=>console.log('index',res))
+      .then(()=>console.log("user_Added"))
       .catch(err=>console.log('index',err))
   }
   //get user 
@@ -33,7 +33,7 @@ const App = () => {
       axios.get(`http://localhost:3003/api/posts/getUser/${obj.email}/${obj.password}`)
       .then(res=>{
         if(res.data){
-          console.log(res.data);
+          
           setCurrentUser(res.data)
           setView('AllPosts')
           
@@ -44,6 +44,7 @@ const App = () => {
       
       .catch(err=>console.log(err))
   }
+  
   const addPost=(userId,data)=>{
     axios.post(`http://localhost:3003/api/posts/createPost/${userId}`,data)
     .then((res)=>{
@@ -51,12 +52,20 @@ const App = () => {
     })
     .catch(err=>console.log(err))
   }
+  const addLike=(postId)=>{
+      axios.put(`http://localhost:3003/api/posts/updateLikes/${postId}`)
+      .then((res)=>{
+        setRefetch(!refetch)
+      })
+      .catch(err=>console.log(err))
+
+  }
   const handleView=(option)=>{
     setView(option)
   }
   const handleViews=()=>{
     if(view==="AllPosts"){
-      return <AllPosts  currentUser={currentUser} addPost={addPost} posts={posts}/>
+      return <AllPosts  addLike={addLike} currentUser={currentUser} addPost={addPost} posts={posts}/>
     }else if(view==="profile"){
       return <Profile handleView={handleView} currentUser={currentUser}/>
     }else if(view==="Home"){

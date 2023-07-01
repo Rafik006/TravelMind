@@ -1,4 +1,5 @@
 const {Posts,Users}=require("../database/models/sequelizeSchema")
+const {Sequelize, where}=require("sequelize")
 
 
 
@@ -31,6 +32,13 @@ module.exports={
         },
         deletePost:(req,res)=>{
             Posts.destroy({where:{
+                postsId:req.params.postId
+            }})
+            .then(result=>res.status(201).json(result))
+            .catch(err=>res.status(500).json(err))
+        },
+        updateLikes:(req,res)=>{
+            Posts.update({ likes: Sequelize.literal('likes + 1') },{where:{
                 postsId:req.params.postId
             }})
             .then(result=>res.status(201).json(result))
