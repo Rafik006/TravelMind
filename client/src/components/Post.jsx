@@ -1,6 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
+import UpdatePost from './UpdatePost.jsx'
 
-const Post = ({post,currentUser,user}) => {
+const Post = ({post,currentUser,user,deletePost,Updatepost}) => {
+  const [editPost,setEdit]=useState({})
+  const handleEdit=(obj)=>{
+    setEdit(obj)
+  }
+  if(editPost.postsId){
+    return <UpdatePost handleEdit={handleEdit} Updatepost={Updatepost} Post={editPost}/>
+  }
+  console.log(editPost)
   return (
     <div className='post'>
             <div className='userInfo'>
@@ -9,8 +18,8 @@ const Post = ({post,currentUser,user}) => {
                 <span>{post.user.firstName+" "+post.user.lastName}</span>
                 </div>
 { user&&                <div className='edit' >
-                <p>update</p>
-                <p>delete</p>
+                <p onClick={()=>handleEdit(post)}>update</p>
+                <p onClick={()=>deletePost(post.postsId)}>delete</p>
                 </div>}
             </div>
             <div className='post-container'>
