@@ -218,3 +218,61 @@ font-family: 'Poppins', sans-serif; */
   .signupInput{
     margin-bottom: 20px;
   }
+  .profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .user-info img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  .user-info h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .edit-user {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+  }
+  
+  .edit-user h4 {
+    font-size: 30px;
+    margin-left: 20px;
+  }
+  
+  .edit-user h4:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  .edit{
+    display: flex;
+    align-items: center;
+  }
+  .userInfo{ 
+    justify-content: space-between;
+  }
+  .edit p{
+    margin-right: 10px;
+    background-color: #09186d;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+  }

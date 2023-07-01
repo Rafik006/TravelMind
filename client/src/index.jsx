@@ -58,7 +58,7 @@ const App = () => {
     if(view==="AllPosts"){
       return <AllPosts  currentUser={currentUser} addPost={addPost} posts={posts}/>
     }else if(view==="profile"){
-      return <Profile/>
+      return <Profile currentUser={currentUser}/>
     }else if(view==="Home"){
       return <Home getUser={getUser} addUser={addUser}/>
     }

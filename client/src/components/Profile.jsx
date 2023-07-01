@@ -1,17 +1,31 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import Post from './Post.jsx'
 
-const Profile = () => {
+const Profile = ({currentUser}) => {
+  console.log("profile",currentUser)
+  const[posts,setPosts]=useState([])
+  const [user,setUser]=useState(true)
+  useEffect(()=>{
+    axios.get(`http://localhost:3003/api/posts/allUserPosts/${currentUser.userId}`)
+    .then(res=>setPosts(res.data))
+    .catch(err=>console.log(err))
+  },[])
   return (
     <div className='profile'>
         <div className='user-info'>
-            <img src='https://www.thetimes.co.uk/imageserver/image/%2Fmethode%2Ftimes%2Fprodmigration%2Fweb%2Fbin%2Fcadd4638-af3e-3694-ba6f-6b53195f1e12.jpg?crop=780%2C520%2C0%2C0' alt="drogba"/>
-            <h3>didier drogba</h3> 
+            <img src={currentUser.imageUrl} alt={currentUser.firstName}/>
+            <h3>{currentUser.firstName} {currentUser.lastName}</h3> 
             <div className='edit-user'>
             <h4>likes</h4> 
                 <h4>update</h4>
                 <h4>delete</h4>
             </div>
         </div>
+        <div className='profile-posts'>
+        {posts.length && posts.map((post,i)=><Post user={user} currentUser={currentUser} key={i} post={post}/>)}
+        </div>
+        
     </div>
   )
 }
